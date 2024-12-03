@@ -6,8 +6,7 @@ export const translations = {
     workBench: "Espace de travail",
     businessPlan: "Plan d'exploitation",
     transition: "Transition",
-    myData: "Mes données",
-    backTo: "Retour à"
+    myData: "Mes données"
   },
 
   // Dashboard
@@ -108,7 +107,7 @@ export const translations = {
 
   // Business Plan
   businessPlan: {
-    kpiEvolution: "Évolution des KPI de l'exploitation",
+    kpiEvolution: "Évolution des indicateurs clés",
     selectParcels: "Sélectionnez des parcelles pour voir les métriques détaillées ou les tendances globales",
     metrics: {
       revenue: "Chiffre d'affaires",
@@ -134,6 +133,36 @@ export const translations = {
       description: "Suivre les exigences réglementaires et la conformité"
     },
     addTask: "Ajouter une tâche",
+    taskList: {
+      title: "Liste des tâches",
+      addTask: "Ajouter une tâche",
+      filterTasks: "Filtrer les tâches",
+      priority: {
+        all: "Toutes",
+        high: "Haute",
+        medium: "Moyenne",
+        low: "Basse"
+      },
+      status: {
+        completed: "Terminée",
+        inProgress: "En cours",
+        pending: "En attente",
+        paused: "En pause"
+      },
+      actions: {
+        start: "Démarrer",
+        pause: "Pause",
+        resume: "Reprendre",
+        complete: "Terminer",
+        edit: "Modifier",
+        details: "Voir les détails"
+      },
+      labels: {
+        parcel: "Parcelle",
+        crop: "Culture",
+        started: "Démarré le"
+      }
+    },
     metrics: {
       totalParcels: "Total parcelles",
       activeArea: "Surface active",
@@ -149,29 +178,6 @@ export const translations = {
     parcelList: {
       title: "Parcelles agricoles",
       description: "Suivre et gérer les parcelles individuelles"
-    },
-    taskList: {
-      title: "Liste des tâches",
-      addTask: "Ajouter une tâche",
-      filterTasks: "Filtrer les tâches",
-      priority: {
-        all: "Toutes",
-        high: "Haute",
-        medium: "Moyenne",
-        low: "Basse"
-      },
-      status: {
-        completed: "Terminée",
-        inProgress: "En cours",
-        pending: "En attente"
-      },
-      actions: {
-        start: "Démarrer",
-        pause: "Pause",
-        complete: "Terminer",
-        edit: "Modifier",
-        details: "Détails"
-      }
     }
   },
 
@@ -222,9 +228,28 @@ export const translations = {
 
   // Transition
   transition: {
-    title: "Plans de transformation",
-    description: "Gérer et suivre la transformation de votre exploitation",
-    selectPlan: "Sélectionnez un plan de transformation pour voir les détails ou en créer un nouveau",
+    title: "Tableau de transformation",
+    description: "Gérer vos plans de transformation agricole",
+    noTransformations: "Aucune transformation disponible",
+    selectPlan: "Sélectionnez un plan pour voir les détails",
+    columns: {
+      title: "Titre",
+      lastUpdate: "Dernière mise à jour",
+      status: "Statut",
+      actions: "Actions"
+    },
+    status: {
+      approved: "Approuvé",
+      under_review: "En révision",
+      rejected: "Rejeté",
+      pending: "En attente"
+    },
+    actions: {
+      view: "Voir",
+      back: "Retour",
+      share: "Partager",
+      optimize: "Optimiser"
+    },
     tabs: {
       ongoing: "En cours",
       review: "En révision",
@@ -233,13 +258,10 @@ export const translations = {
     sections: {
       ongoingTitle: "Transformations en cours",
       ongoingDescription: "Plans de transformation actifs en cours d'implémentation",
-      reviewTitle: "En révision",
+      reviewTitle: "En cours de révision",
       reviewDescription: "Plans en cours de révision ou en attente d'approbation",
       considerationTitle: "À l'étude",
-      considerationDescription: "Plans de transformation potentiels à évaluer",
-      status: "Statut actuel",
-      impact: "Impact prévu",
-      lastUpdate: "Dernière mise à jour"
+      considerationDescription: "Plans en cours d'évaluation pour une implémentation potentielle"
     }
   },
 
@@ -249,14 +271,27 @@ export const translations = {
     compose: "Composer",
     addContact: "Ajouter un contact",
     search: "Rechercher des messages...",
-    messageItem: "Élément de message",
-    unread: "Non lu",
+    loading: "Chargement...",
+    connected: "Connecté",
+    unread: "non lus",
+    urgent: "urgents",
+    messageItem: "Message",
     read: "Lu",
     sentDate: "Date d'envoi",
-    urgent: "Urgent",
     messageContent: "Contenu du message",
     organization: "Organisation",
-    noMessages: "Aucun message"
+    noMessages: "Aucun message",
+    noContacts: "Aucun contact trouvé",
+    actions: {
+      view: "Voir",
+      delete: "Supprimer",
+      edit: "Modifier",
+      close: "Fermer"
+    },
+    tabs: {
+      messages: "Messages",
+      contacts: "Contacts"
+    }
   },
 
   // Contact Details
@@ -280,18 +315,14 @@ export const translations = {
   // Common
   common: {
     actions: {
-      view: "Voir les détails",
-      edit: "Modifier",
-      start: "Démarrer",
-      pause: "Pause",
-      complete: "Terminer",
-      delete: "Supprimer",
-      save: "Enregistrer",
-      cancel: "Annuler",
-      confirm: "Confirmer",
       back: "Retour",
-      next: "Suivant",
-      finish: "Terminer"
+      cancel: "Annuler",
+      save: "Enregistrer",
+      edit: "Modifier",
+      delete: "Supprimer",
+      share: "Partager",
+      view: "Voir",
+      close: "Fermer"
     },
     status: {
       active: "Actif",
