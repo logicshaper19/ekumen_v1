@@ -43,16 +43,9 @@ export const transformations: CropRotationOptimization[] = [
       { year: 2024, crop: "Soja" }
     ],
     optimizedRotation: [
-      { year: 2022, crop: "Blé", projectedYield: 7.8 },
-      { year: 2023, crop: "Maïs", projectedYield: 12.8 },
-      { year: 2024, crop: "Soja", projectedYield: 3.8 },
       { year: 2025, crop: "Trèfle", projectedYield: 4.2 },
       { year: 2026, crop: "Blé", projectedYield: 6.8 },
-      { year: 2027, crop: "Maïs", projectedYield: 11.5 },
-      { year: 2028, crop: "Soja", projectedYield: 3.9 },
-      { year: 2029, crop: "Trèfle", projectedYield: 4.3 },
-      { year: 2030, crop: "Blé", projectedYield: 7.0 },
-      { year: 2031, crop: "Maïs", projectedYield: 11.8 }
+      { year: 2027, crop: "Maïs", projectedYield: 11.5 }
     ],
     kpiProjections: {
       baseline: [],
@@ -81,9 +74,9 @@ export const transformations: CropRotationOptimization[] = [
       { year: 2024, crop: "Soja", yield: 3.4 }
     ],
     optimizedRotation: [
-      { year: 2022, crop: "Blé", projectedYield: 7.8 },
-      { year: 2023, crop: "Maïs", projectedYield: 12.5 },
-      { year: 2024, crop: "Soja", projectedYield: 3.9 }
+      { year: 2025, crop: "Trèfle", projectedYield: 4.2 },
+      { year: 2026, crop: "Blé", projectedYield: 6.8 },
+      { year: 2027, crop: "Maïs", projectedYield: 11.5 }
     ],
     kpiProjections: {
       baseline: [],
@@ -113,9 +106,9 @@ export const transformations: CropRotationOptimization[] = [
       { year: 2024, crop: "Soja", yield: 3.2 }
     ],
     optimizedRotation: [
-      { year: 2022, crop: "Blé", projectedYield: 7.5 },
-      { year: 2023, crop: "Maïs", projectedYield: 12.0 },
-      { year: 2024, crop: "Soja", projectedYield: 3.6 }
+      { year: 2025, crop: "Trèfle", projectedYield: 4.2 },
+      { year: 2026, crop: "Blé", projectedYield: 6.8 },
+      { year: 2027, crop: "Maïs", projectedYield: 11.5 }
     ],
     kpiProjections: {
       baseline: [],
@@ -138,9 +131,9 @@ export const transformations: CropRotationOptimization[] = [
       { year: 2024, crop: "Soja", yield: 3.2 }
     ],
     optimizedRotation: [
-      { year: 2022, crop: "Blé", projectedYield: 7.8 },
-      { year: 2023, crop: "Maïs", projectedYield: 12.2 },
-      { year: 2024, crop: "Soja", projectedYield: 3.6 }
+      { year: 2025, crop: "Trèfle", projectedYield: 4.2 },
+      { year: 2026, crop: "Blé", projectedYield: 6.8 },
+      { year: 2027, crop: "Maïs", projectedYield: 11.5 }
     ],
     kpiProjections: {
       baseline: [],
@@ -163,9 +156,9 @@ export const transformations: CropRotationOptimization[] = [
       { year: 2024, crop: "Soja", yield: 3.1 }
     ],
     optimizedRotation: [
-      { year: 2022, crop: "Blé", projectedYield: 7.4 },
-      { year: 2023, crop: "Cultures de couverture", projectedYield: 0 },
-      { year: 2024, crop: "Soja", projectedYield: 3.4 }
+      { year: 2025, crop: "Trèfle", projectedYield: 4.2 },
+      { year: 2026, crop: "Blé", projectedYield: 6.8 },
+      { year: 2027, crop: "Maïs", projectedYield: 11.5 }
     ],
     kpiProjections: {
       baseline: [],
@@ -188,9 +181,9 @@ export const transformations: CropRotationOptimization[] = [
       { year: 2024, crop: "Blé", yield: 7.1 }
     ],
     optimizedRotation: [
-      { year: 2022, crop: "Maïs", projectedYield: 12.0 },
-      { year: 2023, crop: "Cultures de couverture mixtes", projectedYield: 0 },
-      { year: 2024, crop: "Blé", projectedYield: 7.5 }
+      { year: 2025, crop: "Trèfle", projectedYield: 4.2 },
+      { year: 2026, crop: "Blé", projectedYield: 6.8 },
+      { year: 2027, crop: "Maïs", projectedYield: 11.5 }
     ],
     kpiProjections: {
       baseline: [],

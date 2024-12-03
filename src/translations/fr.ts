@@ -9,6 +9,59 @@ export const translations = {
     myData: "Mes données"
   },
 
+  // Transition section
+  transition: {
+    title: "Tableau de transformation",
+    description: "Gérer vos plans de transformation agricole",
+    noTransformations: "Aucune transformation disponible",
+    selectPlan: "Sélectionnez un plan pour voir les détails",
+    columns: {
+      title: "Titre",
+      lastUpdate: "Dernière mise à jour",
+      status: "Statut",
+      actions: "Actions"
+    },
+    status: {
+      approved: "Approuvé",
+      under_review: "En révision",
+      rejected: "Rejeté",
+      pending: "En attente"
+    },
+    actions: {
+      view: "Voir",
+      back: "Retour",
+      share: "Partager",
+      optimize: "Optimiser"
+    },
+    tabs: {
+      ongoing: "En cours",
+      review: "En révision",
+      consideration: "À l'étude"
+    },
+    sections: {
+      ongoingTitle: "Transformations en cours",
+      ongoingDescription: "Plans de transformation actifs en cours d'implémentation",
+      reviewTitle: "En cours de révision",
+      reviewDescription: "Plans en cours de révision ou en attente d'approbation",
+      considerationTitle: "À l'étude",
+      considerationDescription: "Plans en cours d'évaluation pour une implémentation potentielle"
+    },
+    comparison: {
+      baseline: "Rotation actuelle",
+      optimized: "Rotation optimisée",
+      metrics: "Métriques"
+    },
+    kpi: {
+      title: "Comparaison des indicateurs clés",
+      ghgEmissions: "Émissions de gaz à effet de serre",
+      energyConsumption: "Consommation d'énergie",
+      biodiversity: "Score de biodiversité",
+      soilQuality: "Qualité du sol",
+      workingHours: "Heures de travail",
+      revenue: "Chiffre d'affaires"
+    }
+  },
+
   // Dashboard
   dashboard: {
     welcome: "Bienvenue",
@@ -223,45 +276,6 @@ export const translations = {
       myDocs: "Vos documents et registres agricoles privés",
       shared: "Documents partagés avec les partenaires et conseillers",
       audit: "Rapports officiels et documents de conformité"
-    }
-  },
-
-  // Transition
-  transition: {
-    title: "Tableau de transformation",
-    description: "Gérer vos plans de transformation agricole",
-    noTransformations: "Aucune transformation disponible",
-    selectPlan: "Sélectionnez un plan pour voir les détails",
-    columns: {
-      title: "Titre",
-      lastUpdate: "Dernière mise à jour",
-      status: "Statut",
-      actions: "Actions"
-    },
-    status: {
-      approved: "Approuvé",
-      under_review: "En révision",
-      rejected: "Rejeté",
-      pending: "En attente"
-    },
-    actions: {
-      view: "Voir",
-      back: "Retour",
-      share: "Partager",
-      optimize: "Optimiser"
-    },
-    tabs: {
-      ongoing: "En cours",
-      review: "En révision",
-      consideration: "À l'étude"
-    },
-    sections: {
-      ongoingTitle: "Transformations en cours",
-      ongoingDescription: "Plans de transformation actifs en cours d'implémentation",
-      reviewTitle: "En cours de révision",
-      reviewDescription: "Plans en cours de révision ou en attente d'approbation",
-      considerationTitle: "À l'étude",
-      considerationDescription: "Plans en cours d'évaluation pour une implémentation potentielle"
     }
   },
 
