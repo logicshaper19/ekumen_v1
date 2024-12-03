@@ -179,11 +179,25 @@ export const translations = {
   workBench: {
     title: "Espace de travail",
     description: "Visualiser et gérer les plans de transformation agricole",
+    assistant: {
+      title: "Assistant Agricole",
+      thinking: "En train de réfléchir...",
+      placeholder: "Posez vos questions sur les optimisations...",
+      send: "Envoyer",
+      error: "Une erreur s'est produite. Veuillez réessayer.",
+      contextMessages: {
+        parcel: "Je peux vous aider à optimiser la parcelle %s. Posez-moi des questions sur la santé du sol, les besoins en irrigation ou les recommandations de cultures.",
+        crop: "Je peux vous aider à maximiser le rendement de %s. Posez-moi des questions sur les conditions de croissance optimales, la gestion des parasites ou les tendances du marché.",
+        transformation: "Je peux vous aider à évaluer ce plan de transformation. Posez-moi des questions sur les impacts potentiels, les étapes de mise en œuvre ou les opportunités d'optimisation.",
+        task: "Je peux vous aider à gérer efficacement les tâches agricoles. Posez-moi des questions sur la priorisation des tâches, l'allocation des ressources ou les meilleures pratiques.",
+        regulatory: "Je peux vous aider avec la conformité réglementaire et la documentation. Posez-moi des questions sur les exigences, les délais ou les informations manquantes."
+      }
+    },
     cropList: {
       description: "Gérer les cultures et les rotations"
     },
     regulatoryList: {
-      description: "Suivre les exigences réglementaires et la conformité"
+      description: "Gérer les aspects réglementaires"
     },
     addTask: "Ajouter une tâche",
     taskList: {
@@ -245,7 +259,18 @@ export const translations = {
     lastYield: "Dernier rendement",
     assistant: {
       title: "Assistant agricole",
-      message: "Je peux vous aider à optimiser votre parcelle. Posez-moi des questions sur la santé du sol, les besoins en irrigation ou les recommandations de culture basées sur les conditions actuelles."
+      message: "Je peux vous aider à optimiser votre parcelle. Posez-moi des questions sur la santé du sol, les besoins en irrigation ou les recommandations de culture basées sur les conditions actuelles.",
+      contextMessages: {
+        parcel: "Je peux vous aider à optimiser %s. Posez-moi des questions sur la santé du sol, les besoins en irrigation ou les recommandations de culture basées sur les conditions actuelles.",
+        crop: "Je peux vous aider à maximiser le rendement de %s. Posez-moi des questions sur les conditions optimales de croissance, la gestion des parasites ou les tendances du marché.",
+        transformation: "Je peux vous aider à évaluer ce plan de transformation. Posez-moi des questions sur les impacts potentiels, les étapes de mise en œuvre ou les opportunités d'optimisation.",
+        task: "Je peux vous aider à gérer efficacement les tâches agricoles. Posez-moi des questions sur la priorisation des tâches, l'allocation des ressources ou les meilleures pratiques.",
+        regulatory: "Je peux vous aider avec la conformité réglementaire et la documentation. Posez-moi des questions sur les exigences, les délais ou les informations manquantes."
+      },
+      placeholder: "Posez votre question ici...",
+      send: "Envoyer",
+      thinking: "En réflexion...",
+      error: "Désolé, une erreur s'est produite. Veuillez réessayer."
     },
     soil: {
       data: "Données du sol",
