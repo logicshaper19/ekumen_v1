@@ -108,7 +108,7 @@ export default function ParcelDetailView({ parcel, tasks, onClose }: ParcelDetai
           </div>
         ) : (
           <div className="space-y-4">
-            <TaskList tasks={parcelTasks} />
+            <TaskList tasks={parcelTasks} hideAIAgent={true} />
           </div>
         )}
       </div>

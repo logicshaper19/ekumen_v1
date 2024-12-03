@@ -12,9 +12,10 @@ interface TaskListProps {
   crops: any[];
   filterPriority: string;
   onFilterChange: (priority: string) => void;
+  hideAIAgent?: boolean;
 }
 
-export default function TaskList({ tasks, parcels, crops, filterPriority, onFilterChange }: TaskListProps) {
+export default function TaskList({ tasks, parcels, crops, filterPriority, onFilterChange, hideAIAgent = false }: TaskListProps) {
   const navigate = useNavigate();
   const { t } = useTranslation();
   const [showTaskForm, setShowTaskForm] = useState(false);
@@ -52,8 +53,27 @@ export default function TaskList({ tasks, parcels, crops, filterPriority, onFilt
         return 'text-green-600 bg-green-50';
       case 'in-progress':
         return 'text-blue-600 bg-blue-50';
+      case 'pending':
+        return 'text-gray-600 bg-gray-50';
+      case 'paused':
+        return 'text-yellow-600 bg-yellow-50';
       default:
         return 'text-gray-600 bg-gray-50';
+    }
+  };
+
+  const getStatusTranslation = (status: string) => {
+    switch (status) {
+      case 'completed':
+        return t.workBench.taskList.status.completed;
+      case 'in-progress':
+        return t.workBench.taskList.status.inProgress;
+      case 'pending':
+        return t.workBench.taskList.status.pending;
+      case 'paused':
+        return t.workBench.taskList.status.paused;
+      default:
+        return status;
     }
   };
 
@@ -84,7 +104,7 @@ export default function TaskList({ tasks, parcels, crops, filterPriority, onFilt
   
   return (
     <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-      <div className="lg:col-span-2">
+      <div className={hideAIAgent ? "col-span-full" : "lg:col-span-2"}>
         <div className="bg-white shadow-md rounded-lg overflow-hidden">
 
       <div className="px-4 py-3 border-b border-gray-200">
@@ -159,10 +179,10 @@ export default function TaskList({ tasks, parcels, crops, filterPriority, onFilt
               onChange={(e) => onFilterChange(e.target.value)}
               className="rounded-md border-gray-300 text-sm"
             >
-              <option value="all">{t.workBench.taskList.priorities.all}</option>
-              <option value="high">{t.workBench.taskList.priorities.high}</option>
-              <option value="medium">{t.workBench.taskList.priorities.medium}</option>
-              <option value="low">{t.workBench.taskList.priorities.low}</option>
+              <option value="all">{t.workBench.taskList.priority.all}</option>
+              <option value="high">{t.workBench.taskList.priority.high}</option>
+              <option value="medium">{t.workBench.taskList.priority.medium}</option>
+              <option value="low">{t.workBench.taskList.priority.low}</option>
             </select>
           </div>
         </div>
@@ -192,16 +212,20 @@ export default function TaskList({ tasks, parcels, crops, filterPriority, onFilt
                 <div className="flex items-center">
                   <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${getPriorityColor(task.priority)}`}>
                     <Flag className="h-3 w-3 mr-1" />
-                    {task.priority}
+                    {t.workBench.taskList.priority[task.priority]}
                   </span>
                   <span className={`ml-2 inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${getStatusColor(task.status)}`}>
                     <CheckCircle className="h-3 w-3 mr-1" />
-                    {task.status}
+                    {getStatusTranslation(task.status)}
                   </span>
                 </div>
                 <div className="flex items-center text-sm text-gray-500">
                   <Calendar className="h-4 w-4 mr-1" />
-                  {new Date(task.dueDate).toLocaleDateString('fr-FR')}
+                  {task.dueDate ? new Date(task.dueDate).toLocaleDateString('fr-FR', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                  }) : 'Date invalide'}
                 </div>
               </div>
 
@@ -274,7 +298,10 @@ export default function TaskList({ tasks, parcels, crops, filterPriority, onFilt
                 </div>
                 {task.timing?.startTime && (
                   <span className="text-xs text-gray-500">
-                    Démarré: {new Date(task.timing.startTime).toLocaleTimeString()}
+                    {t.workBench.taskList.labels.started}: {new Date(task.timing.startTime).toLocaleString('fr-FR', {
+                      hour: '2-digit',
+                      minute: '2-digit'
+                    })}
                   </span>
                 )}
               </div>
@@ -291,10 +318,11 @@ export default function TaskList({ tasks, parcels, crops, filterPriority, onFilt
       </div>
       </div>
     </div>
-    <div className="lg:col-span-1">
-      <AIAgent context="task" data={{ tasks: filteredTasks, stats: taskStats }} />
-    </div>
-
+    {!hideAIAgent && (
+      <div className="lg:col-span-1">
+        <AIAgent context="task" data={{ tasks: filteredTasks, stats: taskStats }} />
+      </div>
+    )}
   </div>
   );
 }

@@ -12,6 +12,10 @@ import ComposeModal from './ComposeModal';
 
 type ViewMode = 'inbox' | 'contacts';
 
+interface MessageHandler {
+  (content: string): void;
+}
+
 export default function InboxDashboard() {
   const [viewMode, setViewMode] = useState<ViewMode>('inbox');
   const { t } = useTranslation();
@@ -34,7 +38,8 @@ export default function InboxDashboard() {
   const filteredMessages = messages?.filter(m => {
     if (!m || !partners) return false;
     const partner = partners.find(p => p.id === m.partnerId);
-    const searchText = `${partner?.firstName || ''} ${partner?.lastName || ''} ${m.subject || ''} ${m.content || ''}`.toLowerCase();
+    if (!partner) return false;
+    const searchText = `${partner.firstName} ${partner.lastName} ${m.subject || ''} ${m.content || ''}`.toLowerCase();
     return searchText.includes((searchQuery || '').toLowerCase());
   }) || [];
 
@@ -132,11 +137,11 @@ export default function InboxDashboard() {
 
         {/* Message/Contact Detail */}
         <div className="flex-1 bg-white overflow-y-auto">
-          {viewMode === 'inbox' && selectedMessage && (
+          {viewMode === 'inbox' && selectedMessage && selectedContact && (
             <MessageThread
               messages={messages.filter(m => m.id === selectedMessage.id)}
-              partner={selectedContact!}
-              onSendMessage={(content) => {
+              partner={selectedContact}
+              onSendMessage={(content: string) => {
                 // Handle sending message
                 console.log('Sending message:', content);
               }}

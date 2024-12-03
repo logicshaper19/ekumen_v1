@@ -167,9 +167,9 @@ export default function TaskForm() {
                     onChange={(e) => setTask({ ...task, priority: e.target.value })}
                     className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
                   >
-                    <option value="low">{t.workBench.taskList.priorities.low}</option>
-                    <option value="medium">{t.workBench.taskList.priorities.medium}</option>
-                    <option value="high">{t.workBench.taskList.priorities.high}</option>
+                    <option value="low">{t.workBench.taskList.priority.low}</option>
+                    <option value="medium">{t.workBench.taskList.priority.medium}</option>
+                    <option value="high">{t.workBench.taskList.priority.high}</option>
                   </select>
                 </div>
 

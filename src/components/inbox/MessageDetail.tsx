@@ -1,15 +1,16 @@
-import { FileDown, Send, Building2, Globe, Phone } from 'lucide-react';
+import { FileDown, Send, Building2, Phone, X } from 'lucide-react';
 import { useState } from 'react';
 import { Message } from '../../data/messagesData';
-import { partners } from '../../data/partnersData';
+import { Partner } from '../../data/partnersData';
 
 interface MessageDetailProps {
   message: Message;
+  partner: Partner | null;
+  onClose: () => void;
 }
 
-export default function MessageDetail({ message }: MessageDetailProps) {
+export default function MessageDetail({ message, partner, onClose }: MessageDetailProps) {
   const [reply, setReply] = useState('');
-  const partner = partners.find(p => p.id === message.partnerId);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -18,6 +19,18 @@ export default function MessageDetail({ message }: MessageDetailProps) {
 
   return (
     <div className="flex flex-col h-full">
+      <div className="px-6 py-4 border-b border-gray-200 flex justify-between items-center">
+        <h2 className="text-lg font-medium text-gray-900">
+          {partner?.firstName} {partner?.lastName}
+        </h2>
+        <button
+          onClick={onClose}
+          className="p-2 rounded-md hover:bg-gray-100"
+        >
+          <X className="h-5 w-5 text-gray-500" />
+        </button>
+      </div>
+
       <div className="px-6 py-4 border-b border-gray-200">
         <div className="flex items-center justify-between">
           <div>

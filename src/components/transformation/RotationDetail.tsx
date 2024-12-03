@@ -5,12 +5,14 @@ interface RotationDetailProps {
   transformation: CropRotationOptimization;
   showOptimization: boolean;
   onRequestOptimization: () => void;
+  t: any;
 }
 
 export default function RotationDetail({ 
   transformation, 
   showOptimization,
-  onRequestOptimization 
+  onRequestOptimization,
+  t
 }: RotationDetailProps) {
   return (
     <div className="bg-white shadow-md rounded-lg p-6">
@@ -25,7 +27,7 @@ export default function RotationDetail({
             className="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700"
           >
             <Sparkles className="h-4 w-4 mr-2" />
-            Optimize
+            {t.transition.actions.optimize}
           </button>
         )}
       </div>
@@ -34,7 +36,7 @@ export default function RotationDetail({
         <div className="grid grid-cols-1 gap-6">
           <div>
             <h3 className="text-sm font-medium text-gray-500 mb-3">
-              Current Rotation
+              {t.transition.comparison.baseline}
             </h3>
             <div className="space-y-2">
               {transformation.currentRotation.map((rotation) => (
@@ -52,7 +54,7 @@ export default function RotationDetail({
           {showOptimization && (
             <div>
               <h3 className="text-sm font-medium text-gray-500 mb-3">
-                Optimized Rotation
+                {t.transition.comparison.optimized}
               </h3>
               <div className="space-y-2">
                 {transformation.optimizedRotation.map((rotation) => (
@@ -81,14 +83,14 @@ export default function RotationDetail({
               className="inline-flex items-center px-3 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50"
             >
               <FileDown className="h-4 w-4 mr-2" />
-              Download Plan
+              Télécharger le plan
             </a>
             <button
               onClick={() => {/* Add chat functionality */}}
               className="inline-flex items-center px-3 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50"
             >
               <MessageCircle className="h-4 w-4 mr-2" />
-              See Chat
+              Voir la discussion
             </button>
           </div>
         </div>

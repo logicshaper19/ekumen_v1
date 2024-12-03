@@ -98,5 +98,3 @@ export const messages: Message[] = [
     ]
   }
 ];
-
-export type { Message, Partner };

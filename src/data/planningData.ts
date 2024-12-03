@@ -206,8 +206,8 @@ export const crops: Crop[] = [
 export const tasks: Task[] = [
   {
     id: "t1",
-    title: "Soil Analysis - North Field",
-    description: "Conduct comprehensive soil analysis before spring planting",
+    title: "Analyse du sol - Parcelle Nord",
+    description: "Effectuer une analyse complète du sol avant les semis de printemps",
     startDate: "2024-04-01",
     startTime: "09:00",
     endDate: "2024-04-01", 
@@ -219,8 +219,8 @@ export const tasks: Task[] = [
   },
   {
     id: "t2",
-    title: "Spring Wheat Planting",
-    description: "Begin planting spring wheat variety according to rotation plan",
+    title: "Semis de blé de printemps",
+    description: "Commencer les semis de blé de printemps selon le plan de rotation",
     startDate: "2024-04-15",
     startTime: "08:00",
     endDate: "2024-04-17",
@@ -233,8 +233,8 @@ export const tasks: Task[] = [
   },
   {
     id: "t3",
-    title: "Irrigation System Maintenance",
-    description: "Check and repair irrigation system before growing season",
+    title: "Entretien du système d'irrigation",
+    description: "Vérifier et réparer le système d'irrigation avant la saison de croissance",
     startDate: "2024-04-02",
     startTime: "10:00",
     endDate: "2024-04-02",
@@ -246,8 +246,8 @@ export const tasks: Task[] = [
   },
   {
     id: "t4",
-    title: "Fertilizer Application",
-    description: "Apply pre-planting fertilizer to South Field",
+    title: "Application d'engrais",
+    description: "Appliquer l'engrais de pré-semis sur la Parcelle Sud",
     startDate: "2024-04-03",
     startTime: "07:00",
     endDate: "2024-04-03",
@@ -259,8 +259,8 @@ export const tasks: Task[] = [
   },
   {
     id: "t5",
-    title: "Equipment Inspection",
-    description: "Inspect and prepare planting equipment",
+    title: "Inspection des équipements",
+    description: "Inspecter et préparer les équipements de semis",
     startDate: "2024-04-05",
     startTime: "09:00",
     endDate: "2024-04-05",
