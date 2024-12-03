@@ -178,9 +178,9 @@ export const translations = {
 
   // Transition
   transition: {
-    title: "Transformation Planning",
-    description: "View and optimize farm transformation plans",
-    selectPlan: "Select a transformation plan to view details and optimization options",
+    title: "Transformation Plans",
+    description: "Manage and track your farm's transformation journey",
+    selectPlan: "Select a transformation plan to view details or create a new one",
     tabs: {
       ongoing: "Ongoing",
       review: "Under Review",
@@ -192,7 +192,10 @@ export const translations = {
       reviewTitle: "Under Review",
       reviewDescription: "Plans under review or pending approval",
       considerationTitle: "Under Consideration",
-      considerationDescription: "Plans being evaluated for potential implementation"
+      considerationDescription: "Potential transformation plans to evaluate",
+      status: "Current Status",
+      impact: "Expected Impact",
+      lastUpdate: "Last Updated"
     }
   },
 
@@ -218,27 +221,19 @@ export const translations = {
   // Common
   common: {
     actions: {
-      view: "View",
-      edit: "Edit",
-      delete: "Delete",
+      back: "Back",
       save: "Save",
       cancel: "Cancel",
       confirm: "Confirm",
-      back: "Back",
-      next: "Next",
-      finish: "Finish"
+      delete: "Delete",
+      edit: "Edit",
+      view: "View Details"
     },
     status: {
-      active: "Active",
-      inactive: "Inactive",
-      pending: "Pending",
-      completed: "Completed"
-    },
-    units: {
-      hectares: "ha",
-      tonnes: "t",
-      days: "days",
-      hours: "h"
+      pending: "Status",
+      approved: "Approved",
+      rejected: "Rejected",
+      inProgress: "In Progress"
     }
   }
 };

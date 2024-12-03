@@ -41,8 +41,8 @@ export default function App() {
           <Route path="/planning/tasks/new" element={<TaskForm />} />
           <Route path="/planning/tasks/:id" element={<TaskDetail />} />
           <Route path="/planning/regulatory/:id" element={<RegulatoryDetail />} />
-          <Route path="/execution/data" element={<ExecutionDashboard />} />
           <Route path="/transformation" element={<TransformationDashboard />} />
+          <Route path="/execution/data" element={<ExecutionDashboard />} />
           <Route path="/bank/dashboard" element={<BankDashboard />} />
           <Route path="/insurance/dashboard" element={<InsuranceDashboard />} />
           </Routes>

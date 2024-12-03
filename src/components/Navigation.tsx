@@ -40,6 +40,23 @@ export default function Navigation() {
               const isActive = location.pathname === item.path || 
                 (item.subItems?.some(sub => location.pathname === sub.path));
               
+              if (item.path === "/planning") {
+                return (
+                  <Link
+                    key={item.path}
+                    to={item.path}
+                    className={`inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium ${
+                      isActive
+                        ? 'border-indigo-500 text-gray-900'
+                        : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700'
+                    }`}
+                  >
+                    <Icon className="w-4 h-4 mr-2" />
+                    {`${t.navigation.backTo} ${t.navigation[item.key]}`}
+                  </Link>
+                );
+              }
+
               if (item.subItems) {
                 return (
                   <div key={item.path} className="relative group inline-block">
@@ -51,7 +68,7 @@ export default function Navigation() {
                       }`}
                     >
                       <Icon className="w-4 h-4 mr-2" />
-                      {item.label}
+                      {t.navigation[item.key]}
                     </div>
                     <div className="hidden group-hover:block absolute z-10 w-48 mt-0 bg-white rounded-md shadow-lg">
                       {item.subItems.map((subItem) => {
@@ -69,7 +86,7 @@ export default function Navigation() {
                           >
                             <div className="flex items-center">
                               <SubIcon className="w-4 h-4 mr-2" />
-                              {subItem.label}
+                              {t.navigation[subItem.key]}
                             </div>
                           </Link>
                         );

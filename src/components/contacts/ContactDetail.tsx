@@ -1,12 +1,14 @@
 import { Building2, Mail, Phone, Globe, Calendar, FileText, MessageSquare, Clock } from 'lucide-react';
 import { Partner } from '../../data/partnersData';
 import { messages } from '../../data/messagesData';
+import { useTranslation } from '../../contexts/LanguageContext';
 
 interface ContactDetailProps {
   partner: Partner;
 }
 
 export default function ContactDetail({ partner }: ContactDetailProps) {
+  const { t } = useTranslation();
   const partnerMessages = messages.filter(m => m.partnerId === partner.id);
   const lastContact = partnerMessages.length > 0 
     ? new Date(Math.max(...partnerMessages.map(m => new Date(m.timestamp).getTime())))
@@ -36,7 +38,7 @@ export default function ContactDetail({ partner }: ContactDetailProps) {
               ? 'bg-gray-100 text-gray-800'
               : 'bg-blue-100 text-blue-800'
           }`}>
-            {partner.status}
+            {t.contact.status[partner.status]}
           </span>
         </div>
       </div>
@@ -44,7 +46,7 @@ export default function ContactDetail({ partner }: ContactDetailProps) {
       <div className="flex-1 p-6">
         <div className="space-y-6">
           <div>
-            <h3 className="text-sm font-medium text-gray-500 mb-3">Contact Information</h3>
+            <h3 className="text-sm font-medium text-gray-500 mb-3">{t.contact.information}</h3>
             <div className="space-y-3">
               <div className="flex items-center text-sm">
                 <Building2 className="h-5 w-5 text-gray-400 mr-3" />
@@ -72,27 +74,27 @@ export default function ContactDetail({ partner }: ContactDetailProps) {
           </div>
 
           <div>
-            <h3 className="text-sm font-medium text-gray-500 mb-3">Communication History</h3>
+            <h3 className="text-sm font-medium text-gray-500 mb-3">{t.contact.communicationHistory}</h3>
             <div className="space-y-4">
               <div className="bg-gray-50 p-4 rounded-lg">
                 <div className="flex items-center justify-between mb-2">
                   <div className="flex items-center">
                     <Clock className="h-5 w-5 text-gray-400 mr-2" />
-                    <span className="text-sm font-medium text-gray-900">Last Contact</span>
+                    <span className="text-sm font-medium text-gray-900">{t.contact.lastContact}</span>
                   </div>
                   {lastContact && (
                     <span className="text-sm text-gray-500">
-                      {lastContact.toLocaleDateString()}
+                      {lastContact.toLocaleDateString('fr-FR')}
                     </span>
                   )}
                 </div>
                 <div className="flex items-center justify-between">
                   <div className="flex items-center">
                     <MessageSquare className="h-5 w-5 text-gray-400 mr-2" />
-                    <span className="text-sm font-medium text-gray-900">Messages</span>
+                    <span className="text-sm font-medium text-gray-900">{t.contact.messages}</span>
                   </div>
                   <span className="text-sm text-gray-500">
-                    {partnerMessages.length} total
+                    {partnerMessages.length} {t.contact.total}
                   </span>
                 </div>
               </div>
@@ -101,19 +103,19 @@ export default function ContactDetail({ partner }: ContactDetailProps) {
                 <div className="flex items-center justify-between mb-2">
                   <div className="flex items-center">
                     <Calendar className="h-5 w-5 text-gray-400 mr-2" />
-                    <span className="text-sm font-medium text-gray-900">Partner Since</span>
+                    <span className="text-sm font-medium text-gray-900">{t.contact.partnerSince}</span>
                   </div>
                   <span className="text-sm text-gray-500">
-                    {new Date(partner.joinDate).toLocaleDateString()}
+                    {new Date(partner.joinDate).toLocaleDateString('fr-FR')}
                   </span>
                 </div>
                 <div className="flex items-center justify-between">
                   <div className="flex items-center">
                     <FileText className="h-5 w-5 text-gray-400 mr-2" />
-                    <span className="text-sm font-medium text-gray-900">Documents</span>
+                    <span className="text-sm font-medium text-gray-900">{t.contact.documents}</span>
                   </div>
                   <span className="text-sm text-gray-500">
-                    {partnerMessages.filter(m => m.attachments && m.attachments.length > 0).length} shared
+                    {partnerMessages.filter(m => m.attachments && m.attachments.length > 0).length} {t.contact.shared}
                   </span>
                 </div>
               </div>
@@ -121,7 +123,7 @@ export default function ContactDetail({ partner }: ContactDetailProps) {
           </div>
 
           <div>
-            <h3 className="text-sm font-medium text-gray-500 mb-3">Recent Documents</h3>
+            <h3 className="text-sm font-medium text-gray-500 mb-3">{t.contact.recentDocuments}</h3>
             <div className="space-y-2">
               {partnerMessages
                 .filter(m => m.attachments && m.attachments.length > 0)
@@ -137,7 +139,7 @@ export default function ContactDetail({ partner }: ContactDetailProps) {
                       <div className="flex-1">
                         <p className="text-sm font-medium text-gray-900">{attachment.name}</p>
                         <p className="text-xs text-gray-500">
-                          {new Date(message.timestamp).toLocaleDateString()}
+                          {new Date(message.timestamp).toLocaleDateString('fr-FR')}
                         </p>
                       </div>
                     </a>

@@ -6,6 +6,7 @@ import RotationDetail from './RotationDetail';
 import KPIComparison from './KPIComparison';
 import AIAgent from '../AIAgent';
 import PartnerSelectionModal from './PartnerSelectionModal';
+import ErrorBoundary from '../ErrorBoundary';
 
 interface SelectedPlan {
   id: string;
@@ -20,9 +21,18 @@ interface TransformationTableProps {
   description: string;
   onSelect: (plan: SelectedPlan) => void;
   onSharePlan: () => void;
+  t: any;
 }
 
-function TransformationTable({ transformations, title, description, onSelect, onSharePlan }: TransformationTableProps) {
+function TransformationTable({ transformations, title, description, onSelect, onSharePlan, t }: TransformationTableProps) {
+  if (!transformations) {
+    return (
+      <div className="bg-white shadow-md rounded-lg p-6">
+        <p className="text-gray-600">No transformations available</p>
+      </div>
+    );
+  }
+
   return (
     <div className="bg-white shadow-md rounded-lg overflow-hidden">
       <div className="px-6 py-4 border-b border-gray-200">
@@ -33,13 +43,13 @@ function TransformationTable({ transformations, title, description, onSelect, on
         <thead className="bg-gray-50">
           <tr>
             <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-              {t.transition.sections.ongoingTitle}
+              {title}
             </th>
             <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-              {t.common.status.pending}
+              {t.transition.sections.lastUpdate}
             </th>
             <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-              {t.transition.sections.ongoingDescription}
+              {t.transition.sections.impact}
             </th>
             <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
               {t.common.actions.view}
@@ -154,6 +164,38 @@ export default function TransformationDashboard() {
   const [activeTab, setActiveTab] = useState<TabType>('ongoing');
   const [showPartnerModal, setShowPartnerModal] = useState(false);
 
+  console.log('TransformationDashboard rendering', {
+    transformations,
+    t,
+    activeTab
+  });
+
+  if (!t || !t.transition) {
+    console.error('Missing translations:', t);
+    return (
+      <div className="min-h-screen bg-gray-50 p-8">
+        <div className="max-w-7xl mx-auto">
+          <div className="bg-white shadow-md rounded-lg p-6">
+            <p className="text-gray-600">Loading translations...</p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (!transformations) {
+    return (
+      <div className="min-h-screen bg-gray-50 p-8">
+        <div className="max-w-7xl mx-auto">
+          <h1 className="text-2xl font-bold text-gray-900 mb-8">Transformation Dashboard</h1>
+          <div className="bg-white shadow-md rounded-lg p-6">
+            <p className="text-gray-600">Loading transformation data...</p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   const ongoingTransformations = transformations.filter(
     t => t.status === 'approved' && !t.partnerStatus
   );
@@ -208,104 +250,107 @@ export default function TransformationDashboard() {
   const currentView = getCurrentTransformations();
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <div className="flex items-center justify-between mb-6">
-        <div>
-          <h1 className="text-2xl font-bold text-gray-900">{t.transition.title}</h1>
-          <p className="text-sm text-gray-600 mt-1">{t.transition.description}</p>
-        </div>
-        {selectedTransformation && (
-          <button
-            onClick={() => {
-              setSelectedPlan(null);
-              setShowOptimization(false);
-            }}
-            className="inline-flex items-center px-3 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 bg-white hover:bg-gray-50"
-          >
-            <ArrowLeft className="h-4 w-4 mr-2" />
-            {t.common.actions.back}
-          </button>
-        )}
-      </div>
-
-      <div className="bg-gray-50 rounded-lg p-4 mb-6">
-        <p className="text-gray-600">
-          {t.transition.selectPlan}
-        </p>
-      </div>
-
-      {!selectedTransformation && (
-        <div className="mb-6">
-          <nav className="flex space-x-4" aria-label="Tabs">
-            {tabs.map((tab) => {
-              const Icon = tab.icon;
-              return (
-                <button
-                  key={tab.id}
-                  onClick={() => setActiveTab(tab.id as TabType)}
-                  className={`${
-                    activeTab === tab.id
-                      ? 'bg-indigo-100 text-indigo-700'
-                      : 'text-gray-500 hover:text-gray-700'
-                  } px-3 py-2 font-medium text-sm rounded-md inline-flex items-center`}
-                >
-                  <Icon className="h-4 w-4 mr-2" />
-                  {t.transition.tabs[tab.id]}
-                  <span className={`ml-2 px-2 py-0.5 rounded-full text-xs ${
-                    activeTab === tab.id
-                      ? 'bg-indigo-200 text-indigo-800'
-                      : 'bg-gray-100 text-gray-600'
-                  }`}>
-                    {tab.count}
-                  </span>
-                </button>
-              );
-            })}
-          </nav>
-        </div>
-      )}
-
-      <div className="flex flex-col lg:flex-row gap-6">
-        <div className="w-full lg:w-2/3">
-          {selectedTransformation ? (
-            <div className="space-y-6">
-              <RotationDetail
-                transformation={selectedTransformation}
-                showOptimization={showOptimization}
-                onRequestOptimization={() => setShowOptimization(true)}
-              />
-              {showOptimization && (
-                <KPIComparison
-                  baseline={selectedTransformation.kpiProjections.baseline}
-                  optimized={selectedTransformation.kpiProjections.optimized}
-                />
-              )}
-            </div>
-          ) : (
-            <TransformationTable
-              transformations={currentView.transformations}
-              title={t.transition.sections[`${activeTab}Title`]}
-              description={t.transition.sections[`${activeTab}Description`]}
-              onSelect={setSelectedPlan}
-              onSharePlan={() => setShowPartnerModal(true)}
-            />
+    <ErrorBoundary>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div className="flex items-center justify-between mb-6">
+          <div>
+            <h1 className="text-2xl font-bold text-gray-900">{t.transition.title}</h1>
+            <p className="text-sm text-gray-600 mt-1">{t.transition.description}</p>
+          </div>
+          {selectedTransformation && (
+            <button
+              onClick={() => {
+                setSelectedPlan(null);
+                setShowOptimization(false);
+              }}
+              className="inline-flex items-center px-3 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 bg-white hover:bg-gray-50"
+            >
+              <ArrowLeft className="h-4 w-4 mr-2" />
+              {t.common.actions.back}
+            </button>
           )}
         </div>
 
-        <div className="w-full lg:w-1/3 flex-shrink-0">
-          <AIAgent context="transformation" data={selectedTransformation || currentView} />
+        <div className="bg-gray-50 rounded-lg p-4 mb-6">
+          <p className="text-gray-600">
+            {t.transition.selectPlan}
+          </p>
         </div>
+
+        {!selectedTransformation && (
+          <div className="mb-6">
+            <nav className="flex space-x-4" aria-label="Tabs">
+              {tabs.map((tab) => {
+                const Icon = tab.icon;
+                return (
+                  <button
+                    key={tab.id}
+                    onClick={() => setActiveTab(tab.id as TabType)}
+                    className={`${
+                      activeTab === tab.id
+                        ? 'bg-indigo-100 text-indigo-700'
+                        : 'text-gray-500 hover:text-gray-700'
+                    } px-3 py-2 font-medium text-sm rounded-md inline-flex items-center`}
+                  >
+                    <Icon className="h-4 w-4 mr-2" />
+                    {t.transition.tabs[tab.id]}
+                    <span className={`ml-2 px-2 py-0.5 rounded-full text-xs ${
+                      activeTab === tab.id
+                        ? 'bg-indigo-200 text-indigo-800'
+                        : 'bg-gray-100 text-gray-600'
+                    }`}>
+                      {tab.count}
+                    </span>
+                  </button>
+                );
+              })}
+            </nav>
+          </div>
+        )}
+
+        <div className="flex flex-col lg:flex-row gap-6">
+          <div className="w-full lg:w-2/3">
+            {selectedTransformation ? (
+              <div className="space-y-6">
+                <RotationDetail
+                  transformation={selectedTransformation}
+                  showOptimization={showOptimization}
+                  onRequestOptimization={() => setShowOptimization(true)}
+                />
+                {showOptimization && (
+                  <KPIComparison
+                    baseline={selectedTransformation.kpiProjections.baseline}
+                    optimized={selectedTransformation.kpiProjections.optimized}
+                  />
+                )}
+              </div>
+            ) : (
+              <TransformationTable
+                transformations={currentView.transformations}
+                title={t.transition.sections[`${activeTab}Title`]}
+                description={t.transition.sections[`${activeTab}Description`]}
+                onSelect={setSelectedPlan}
+                onSharePlan={() => setShowPartnerModal(true)}
+                t={t}
+              />
+            )}
+          </div>
+
+          <div className="w-full lg:w-1/3 flex-shrink-0">
+            <AIAgent context="transformation" data={selectedTransformation || currentView} />
+          </div>
+        </div>
+        
+        {showPartnerModal && (
+          <PartnerSelectionModal
+            onClose={() => setShowPartnerModal(false)}
+            onSubmit={(partners) => {
+              console.log('Selected partners:', partners);
+              setShowPartnerModal(false);
+            }}
+          />
+        )}
       </div>
-      
-      {showPartnerModal && (
-        <PartnerSelectionModal
-          onClose={() => setShowPartnerModal(false)}
-          onSubmit={(partners) => {
-            console.log('Selected partners:', partners);
-            setShowPartnerModal(false);
-          }}
-        />
-      )}
-    </div>
+    </ErrorBoundary>
   );
 }

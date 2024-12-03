@@ -29,18 +29,18 @@ export const messages: Message[] = [
       email: 'j.dupont@creditagricole.fr',
       company: 'Crédit Agricole'
     },
-    subject: 'Loan Application Review',
-    content: 'Your farm transformation loan application has been reviewed. We need additional documentation for soil quality assessment.',
+    subject: 'Examen de la demande de prêt',
+    content: 'Votre demande de prêt de transformation agricole a été examinée. Nous avons besoin d\'une documentation supplémentaire pour l\'évaluation de la qualité du sol.',
     timestamp: '2024-03-20T14:30:00',
     isRead: false,
     isUrgent: true,
-    summary: 'Additional documentation needed for loan application',
+    summary: 'Documentation supplémentaire nécessaire pour la demande de prêt',
     attachments: [
       {
-        name: 'loan_requirements.pdf',
-        url: '/docs/loan_requirements.pdf',
+        name: 'exigences_pret.pdf',
+        url: '/docs/exigences_pret.pdf',
         type: 'PDF',
-        size: '2.4 MB'
+        size: '2,4 Mo'
       }
     ]
   },
@@ -50,21 +50,23 @@ export const messages: Message[] = [
     sender: {
       name: 'Marie Laurent',
       email: 'm.laurent@chambagri.fr',
-      company: "Chambre d'Agriculture"
+      company: 'Chambre d\'Agriculture'
     },
-    subject: 'Organic Certification Update',
-    content: 'Latest inspection results for organic certification process. Please review the attached report.',
+    subject: 'Mise à jour de la certification biologique',
+    content: 'Derniers résultats d\'inspection pour le processus de certification biologique. Veuillez examiner le rapport ci-joint.',
     timestamp: '2024-03-19T09:15:00',
     isRead: true,
     isUrgent: false,
-    summary: 'Organic certification inspection results',
+    summary: 'Résultats de l\'inspection de certification biologique',
     attachments: [
       {
-        name: 'inspection_report_march2024.pdf',
-        url: '/docs/inspection_report_march2024.pdf',
+        name: 'rapport_inspection_mars2024.pdf',
+        url: '/docs/rapport_inspection_mars2024.pdf',
         type: 'PDF',
-        size: '3.1 MB'
+        size: '3,1 Mo'
       }
     ]
   }
 ];
+
+export type { Message };

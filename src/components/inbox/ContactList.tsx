@@ -1,5 +1,6 @@
 import { Partner } from '../../data/partnersData';
 import { Building2, Users } from 'lucide-react';
+import { useTranslation } from '../../contexts/LanguageContext';
 
 interface ContactListProps {
   partners: Partner[];
@@ -7,11 +8,26 @@ interface ContactListProps {
   onSelect: (id: string) => void;
 }
 
+const getStatusLabel = (status: Partner['status']) => {
+  switch (status) {
+    case 'active':
+      return 'actif';
+    case 'inactive':
+      return 'inactif';
+    case 'new':
+      return 'nouveau';
+    default:
+      return status;
+  }
+};
+
 export default function ContactList({ partners, selectedId, onSelect }: ContactListProps) {
+  const { t } = useTranslation();
+  
   return (
     <div className="bg-white shadow-md rounded-lg overflow-hidden">
       <div className="px-4 py-3 border-b border-gray-200">
-        <h2 className="text-sm font-medium text-gray-900">Contacts</h2>
+        <h2 className="text-sm font-medium text-gray-900">{t.inbox.tabs.contacts}</h2>
       </div>
       <div className="divide-y divide-gray-200">
         {partners.map((partner) => (
@@ -35,7 +51,7 @@ export default function ContactList({ partners, selectedId, onSelect }: ContactL
                   ? 'bg-gray-100 text-gray-800'
                   : 'bg-blue-100 text-blue-800'
               }`}>
-                {partner.status}
+                {getStatusLabel(partner.status)}
               </span>
             </div>
             <div className="flex items-center text-sm text-gray-500">
@@ -48,7 +64,7 @@ export default function ContactList({ partners, selectedId, onSelect }: ContactL
                 onClick={() => onSelect(partner.id)}
                 className="px-3 py-1 text-sm text-indigo-600 hover:bg-indigo-50 rounded-md"
               >
-                Message
+                {t.inbox.actions.message}
               </button>
             </div>
           </div>

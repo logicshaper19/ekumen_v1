@@ -35,7 +35,7 @@ export const partners: Partner[] = [
     firstName: 'Jean',
     lastName: 'Dupont',
     email: 'j.dupont@creditagricole.fr',
-    title: 'Agricultural Finance Advisor',
+    title: 'Conseiller en Financement Agricole',
     company: 'Crédit Agricole',
     phone: '+33 1 23 45 67 89',
     website: 'www.credit-agricole.fr',
@@ -52,8 +52,8 @@ export const partners: Partner[] = [
     firstName: 'Marie',
     lastName: 'Laurent',
     email: 'm.laurent@chambagri.fr',
-    title: 'Agricultural Advisor',
-    company: "Chambre d'Agriculture",
+    title: 'Conseillère Agricole',
+    company: 'Chambre d\'Agriculture',
     phone: '+33 1 34 56 78 90',
     website: 'www.chambres-agriculture.fr',
     status: 'new',
@@ -69,7 +69,7 @@ export const partners: Partner[] = [
     firstName: 'Pierre',
     lastName: 'Martin',
     email: 'p.martin@groupama.fr',
-    title: 'Agricultural Risk Manager',
+    title: 'Gestionnaire des Risques Agricoles',
     company: 'Groupama',
     phone: '+33 1 45 67 89 01',
     website: 'www.groupama.fr',
@@ -86,29 +86,17 @@ export const messages: Message[] = [
   {
     id: 'm1',
     partnerId: 'p1',
-    content: 'Latest soil analysis shows improved nitrogen levels. Recommend adjusting fertilizer application schedule.',
+    content: 'La dernière analyse du sol montre une amélioration des niveaux d\'azote. Nous recommandons d\'ajuster le calendrier d\'application des engrais.',
     timestamp: '2024-03-15T10:30:00',
     source: 'email',
     attachments: [
       {
-        name: 'soil_analysis_march2024.pdf',
-        url: '/docs/soil_analysis_march2024.pdf',
-        type: 'PDF'
-      }
-    ]
-  },
-  {
-    id: 'm2',
-    partnerId: 'p2',
-    content: 'New cooperative guidelines for organic certification process.',
-    timestamp: '2024-03-10T14:45:00',
-    source: 'email',
-    attachments: [
-      {
-        name: 'organic_guidelines_2024.pdf',
-        url: '/docs/organic_guidelines_2024.pdf',
+        name: 'analyse_sol_mars2024.pdf',
+        url: '/docs/analyse_sol_mars2024.pdf',
         type: 'PDF'
       }
     ]
   }
 ];
+
+export type { Message, Partner };

@@ -95,7 +95,7 @@ export default function TaskList({ tasks, parcels, crops, filterPriority, onFilt
             className="inline-flex items-center px-3 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700"
           >
             <Plus className="h-4 w-4 mr-2" />
-            {t.workBench.addTask}
+            {t.workBench.taskList.addTask}
           </button>
         </div>
 
@@ -217,10 +217,10 @@ export default function TaskList({ tasks, parcels, crops, filterPriority, onFilt
                           e.stopPropagation();
                           handlePauseTask(task.id);
                         }}
-                        className="inline-flex items-center px-2 py-1 text-xs font-medium text-amber-700 bg-amber-100 rounded hover:bg-amber-200"
+                        className="inline-flex items-center text-sm text-yellow-600 hover:text-yellow-800"
                       >
-                        <Pause className="h-3 w-3 mr-1" />
-                        {t.common.actions.pause}
+                        <Pause className="h-4 w-4 mr-1" />
+                        {t.workBench.taskList.actions.pause}
                       </button>
                     </>
                   )}
@@ -230,28 +230,28 @@ export default function TaskList({ tasks, parcels, crops, filterPriority, onFilt
                         e.stopPropagation();
                         handleStartTask(task.id);
                       }}
-                      className="inline-flex items-center px-2 py-1 text-xs font-medium text-blue-700 bg-blue-100 rounded hover:bg-blue-200"
+                      className="inline-flex items-center text-sm text-blue-600 hover:text-blue-800"
                     >
-                      <Play className="h-3 w-3 mr-1" />
-                      {t.common.actions.resume}
+                      <Play className="h-4 w-4 mr-1" />
+                      {t.workBench.taskList.actions.resume}
                     </button>
                   )}
                   {(task.status === 'pending' || task.status === 'paused') && (
                     <button
                       onClick={(e) => handleStartTask(task.id)}
-                      className="inline-flex items-center px-2 py-1 text-xs font-medium text-green-700 bg-green-100 rounded hover:bg-green-200"
+                      className="inline-flex items-center text-sm text-blue-600 hover:text-blue-800"
                     >
-                      <Play className="h-3 w-3 mr-1" />
-                      {t.common.actions.start}
+                      <Play className="h-4 w-4 mr-1" />
+                      {t.workBench.taskList.actions.start}
                     </button>
                   )}
                   {task.status !== 'completed' && (
                     <button
                       onClick={(e) => handleCompleteTask(task.id)}
-                      className="inline-flex items-center px-2 py-1 text-xs font-medium text-blue-700 bg-blue-100 rounded hover:bg-blue-200"
+                      className="inline-flex items-center text-sm text-green-600 hover:text-green-800"
                     >
-                      <CheckCircle className="h-3 w-3 mr-1" />
-                      {t.common.actions.complete}
+                      <CheckCircle className="h-4 w-4 mr-1" />
+                      {t.workBench.taskList.actions.complete}
                     </button>
                   )}
                   <button

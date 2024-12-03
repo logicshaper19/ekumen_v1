@@ -6,7 +6,8 @@ export const translations = {
     workBench: "Espace de travail",
     businessPlan: "Plan d'exploitation",
     transition: "Transition",
-    myData: "Mes données"
+    myData: "Mes données",
+    backTo: "Retour à"
   },
 
   // Dashboard
@@ -150,19 +151,55 @@ export const translations = {
       description: "Suivre et gérer les parcelles individuelles"
     },
     taskList: {
-      title: "Tâches agricoles",
-      description: "Organiser et suivre les activités agricoles",
-      priorities: {
-        all: "Toutes les priorités",
+      title: "Liste des tâches",
+      addTask: "Ajouter une tâche",
+      filterTasks: "Filtrer les tâches",
+      priority: {
+        all: "Toutes",
         high: "Haute",
         medium: "Moyenne",
         low: "Basse"
       },
       status: {
-        pending: "En attente",
+        completed: "Terminée",
         inProgress: "En cours",
-        completed: "Terminé"
+        pending: "En attente"
+      },
+      actions: {
+        start: "Démarrer",
+        pause: "Pause",
+        complete: "Terminer",
+        edit: "Modifier",
+        details: "Détails"
       }
+    }
+  },
+
+  // Workbench
+  workbench: {
+    title: "Espace de travail",
+    overview: "Aperçu",
+    tasks: "Tâches",
+    currentCrop: "Culture actuelle",
+    soilMoisture: "Humidité du sol",
+    temperature: "Température",
+    lastYield: "Dernier rendement",
+    assistant: {
+      title: "Assistant agricole",
+      message: "Je peux vous aider à optimiser votre parcelle. Posez-moi des questions sur la santé du sol, les besoins en irrigation ou les recommandations de culture basées sur les conditions actuelles."
+    },
+    soil: {
+      data: "Données du sol",
+      type: "Type",
+      ph: "pH",
+      organicMatter: "Matière organique",
+      lastTested: "Dernier test"
+    },
+    irrigation: {
+      title: "Irrigation",
+      system: "Système",
+      schedule: "Programme",
+      lastMaintenance: "Dernier entretien"
     }
   },
 
@@ -185,9 +222,9 @@ export const translations = {
 
   // Transition
   transition: {
-    title: "Planification de la transformation",
-    description: "Visualiser et optimiser les plans de transformation agricole",
-    selectPlan: "Sélectionnez un plan de transformation pour voir les détails et les options d'optimisation",
+    title: "Plans de transformation",
+    description: "Gérer et suivre la transformation de votre exploitation",
+    selectPlan: "Sélectionnez un plan de transformation pour voir les détails ou en créer un nouveau",
     tabs: {
       ongoing: "En cours",
       review: "En révision",
@@ -199,7 +236,10 @@ export const translations = {
       reviewTitle: "En révision",
       reviewDescription: "Plans en cours de révision ou en attente d'approbation",
       considerationTitle: "À l'étude",
-      considerationDescription: "Plans en cours d'évaluation pour une mise en œuvre potentielle"
+      considerationDescription: "Plans de transformation potentiels à évaluer",
+      status: "Statut actuel",
+      impact: "Impact prévu",
+      lastUpdate: "Dernière mise à jour"
     }
   },
 
@@ -208,24 +248,39 @@ export const translations = {
     title: "Messagerie",
     compose: "Composer",
     addContact: "Ajouter un contact",
-    connected: "Connecté à",
-    unread: "non lu",
-    urgent: "urgent",
-    tabs: {
-      messages: "Messages",
-      contacts: "Contacts"
+    search: "Rechercher des messages...",
+    messageItem: "Élément de message",
+    unread: "Non lu",
+    read: "Lu",
+    sentDate: "Date d'envoi",
+    urgent: "Urgent",
+    messageContent: "Contenu du message",
+    organization: "Organisation",
+    noMessages: "Aucun message"
+  },
+
+  // Contact Details
+  contact: {
+    information: "Informations de contact",
+    communicationHistory: "Historique des communications",
+    lastContact: "Dernier contact",
+    messages: "Messages",
+    partnerSince: "Partenaire depuis",
+    documents: "Documents",
+    recentDocuments: "Documents récents",
+    status: {
+      new: "nouveau",
+      inactive: "inactif",
+      active: "actif"
     },
-    messageStatus: {
-      sent: "Envoyé",
-      received: "Reçu",
-      draft: "Brouillon"
-    }
+    total: "total",
+    shared: "partagés"
   },
 
   // Common
   common: {
     actions: {
-      view: "Voir",
+      view: "Voir les détails",
       edit: "Modifier",
       start: "Démarrer",
       pause: "Pause",
@@ -241,7 +296,10 @@ export const translations = {
     status: {
       active: "Actif",
       inactive: "Inactif",
-      pending: "En attente",
+      pending: "Statut",
+      approved: "Approuvé",
+      rejected: "Rejeté",
+      inProgress: "En cours",
       completed: "Terminé"
     },
     units: {
